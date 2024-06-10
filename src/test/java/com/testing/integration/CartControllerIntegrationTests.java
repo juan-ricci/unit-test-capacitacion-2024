@@ -71,7 +71,7 @@ public class CartControllerIntegrationTests {
                         .param("isbn", "978-3-16-1484123-0")
                         .param("quantity", "1"))
                 .andExpect(status().is5xxServerError())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.error").value("Product is not sell by supermarkejhsdgsdjhsdt"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.error").value("Product is not sell by supermarket"));
 
     }
 

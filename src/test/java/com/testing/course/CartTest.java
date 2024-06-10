@@ -36,6 +36,13 @@ public class CartTest {
     }
 
     @Test
+    public void assertRemoveNonExistentFromCart(){
+        cart.remove("717029276-9");
+        HashMap<Object, Long> products = (HashMap<Object, Long>) cart.getProducts();
+        assertNull(products.get("717029276-9"));
+    }
+
+    @Test
     public void assertCartQuantityLessThanOne(){
 
         try {
@@ -45,6 +52,14 @@ public class CartTest {
         catch (RuntimeException ex){
             assertEquals(Cart.PRODUCT_QUANTITY_MUST_BE_STRICTLY_POSITIVE, ex.getMessage());
         }
+    }
+
+    @Test
+    public void addProductThatAlreadyExistInTheCart(){
+        Map<Object, Long> productsTest = new HashMap<>();
+        productsTest.put("717029276-10", (long) 2);
+        cart.add("717029276-10", 1);
+        assertEquals(cart.getProducts(), productsTest);
     }
 
     @Test
